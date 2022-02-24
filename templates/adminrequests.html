@@ -1,0 +1,34 @@
+{% extends 'adminbase.html' %}
+
+{% load static %}
+
+{% block content %}
+<link type="text/css" rel="stylesheet" href="{% static '/css/adminrequests.css' %}">
+
+
+<h2 class="text-center">Select the Respective app to view the post requests!</h2>
+
+
+<div class="pt-5 px-5 mt-5 mx-5 d-flex justify-content-around">
+    <div class="row px-5">
+        <a href="/myadmin/admin_applied_workers/" class="text-decoration-none">
+            <div class="col-md-6 bg-warning p-5 text-center text-light">Workers Requests ({{wr}})</div>
+        </a>
+        <a href="/myadmin/admin_applied_automobiles/" class="text-decoration-none mt-2">
+            <div class="col-md-6 bg-danger p-5 text-center text-light">Automobiles Requests ({{ar}})</div>
+        </a>
+
+    </div>
+    <div class="row px-5">
+        <a href="/myadmin/admin_applied_products/" class="text-decoration-none">
+            <div class="col-md-6 bg-primary p-5 text-center text-light">Products Requests ({{pr}})</div>
+        </a>
+
+        <a href="/myadmin/admin_applied_students/" class="text-decoration-none mt-2">
+            <div class="col-md-6 bg-success p-5 text-center text-light">Students' Applications ({{sr}})</div>
+        </a>
+    </div>
+</div>
+
+
+{% endblock %}

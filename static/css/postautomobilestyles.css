@@ -1,0 +1,9 @@
+#maincontainer{
+    padding: 1% 0% 5% 33%;
+
+}
+.body{
+    background: url("/static/images/automobilebg.jpg") fixed no-repeat;
+    color: white;
+    background-size: fit;
+}

@@ -1,0 +1,9 @@
+.body{
+    background: url("/static/images/learningbg.jpg") fixed;
+}
+#videobox, #youtubebox{
+    background-color: light-grey;
+}
+#historydiv{
+    color: lightgrey;
+}

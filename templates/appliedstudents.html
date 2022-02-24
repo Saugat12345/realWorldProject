@@ -1,0 +1,56 @@
+{% extends 'adminbase.html' %}
+
+{% load static %}
+
+{% block content %}
+<link type="text/css" rel="stylesheet" href="{% static '/css/appliedstudents.css' %}">
+
+<div class="container mt-5 pt-5  table-responsive">
+
+    <h2 class="text-center text-primary">These Students have applied to join our courses!</h2>
+
+    <table class="table table-sm table-hover table-success" id="table">
+        <tr class="table-row table-success">
+            <th class="table-heading">ID</th>
+            <th class="table-heading">Name</th>
+            <th class="table-heading">Email</th>
+            <th class="table-heading">Address</th>
+            <th class="table-heading">State</th>
+            <th class="table-heading">Course</th>
+            <th class="table-heading">Message</th>
+            <th class="table-heading">Actions</th>
+
+
+        </tr>
+
+        {% for appliedstudent in appliedstudents %}
+        <tr class="table-row table-warning">
+            <td class="table-data">{{appliedstudent.id}}</td>
+            <td class="table-data">{{appliedstudent.name}}</td>
+            <td class="table-data">{{appliedstudent.email}}</td>
+            <td class="table-data">{{appliedstudent.address}}</td>
+            <td class="table-data">{{appliedstudent.state}}</td>
+            <td class="table-data">{{appliedstudent.course}}</td>
+            <td class="table-data">{{appliedstudent.message}}</td>
+            <td class="table-data">
+                <form action="{% url 'approvestudent' appliedstudent.id %}" method="post" class="d-inline">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-success" value="Approve">
+                </form>
+
+                <form action="{% url 'declinestudent' appliedstudent.id %}" method="post" class="d-inline">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-danger" value="Decline">
+                </form>
+            </td>
+
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+
+{% endblock %}

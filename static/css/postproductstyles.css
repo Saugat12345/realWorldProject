@@ -1,0 +1,9 @@
+#maincontainer{
+    padding: 1% 0% 5% 33%;
+
+}
+.body{
+    background: url("/static/images/productbg.jpg") fixed;
+    color: crimson;
+    background-size: fit;
+}

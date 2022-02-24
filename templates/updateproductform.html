@@ -1,0 +1,33 @@
+{% load static %}
+{% load bootstrap %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Product</title>
+    <link type="text/css" rel="stylesheet" href="{% static '/css/workersstyles.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static '/css/adminupdates.css' %}">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+          crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container">
+    <div class="col-sm-8 offset-2">
+        <h2 class="alert alert-info">Update the Product Information:</h2>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form | bootstrap_horizontal }}
+            <input type="submit" class="btn btn-success">
+            <a href="/myadmin/adminproducts/" class="btn btn-info">Back</a>
+
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

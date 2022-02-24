@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/joinform.css' %}">
+
+
+<div class="container"  id="maincontainer">
+    <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+
+        <div class="form-group mt-5">
+            <label class="text-primary">Your Name: </label>
+            <div>{{form.name}}</div>
+        </div>
+
+        <div class="form-group mt-5">
+            <label class="text-primary">Your Email: </label>
+            <div>{{form.email}}</div>
+        </div>
+
+        <div class="form-group mt-5">
+            <label class="text-warning">Rate: </label>
+            <div>{{form.rate}}</div>
+        </div>
+
+        <div class="form-group mt-5">
+            <label class="text-danger">Status : </label>
+            <div>{{form.status}}</div>
+        </div>
+
+
+        <button type="submit" class="btn btn-success mt-4">Submit</button>
+        <button type="reset" class="btn btn-secondary mt-4">Reset</button>
+
+    </form>
+</div>
+
+
+{% endblock %}

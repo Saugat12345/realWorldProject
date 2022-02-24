@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<link type="text/css" rel="stylesheet" href="{% static '/css/marketstyles.css' %}">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous">
+
+<link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous">
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
+        integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
+        crossorigin="anonymous"></script>
+
+
+<div class="container mx-5 px-5">
+
+    <h3 class="text-center mt-3">
+        Checkout our Magagine!
+    </h3>
+    <div class="container mx-5 px-5">
+        {% for automobile in automobiles %}
+        <div class="card-columns mt-3">
+            <div class="card" id="card1">
+                <img class="card-img-top" src="/{{automobile.image}}" alt="Automobile Image">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-center text-danger">Read and know about the new {{automobile.name}}!</h5>
+                    <p class="card-text text-center text-warning">There's literally tons of things to mention when talking about {{automobile.name}}.
+                        But we need to shorten that! The seller of {{automobile.name}} says, "{{automobile.description}}"</p>
+                    <hr>
+                    <h3 class="card-title">{% if automobile.status == 'available' %}
+                        <h3 class="text-success fw-bold text-center">
+                            The good news is that {{automobile.name}} is currently {{automobile.status}}!
+                        </h3>
+                        {% else %}
+                        <h3 class="text-danger fw-bold text-center">
+                            The sad fact here is that {{automobile.name}} is currently {{automobile.status}}!
+                        </h3>
+                        {% endif %}
+                    </h3>
+                    <h3 class="card-title text-center">We know our sellers want their automobiles to get the highest value
+                        but our customers are searching for good automobiles at a small price. So, we have set the price
+                        value of {{automobile.name}} to only ${{automobile.price}}! ${{automobile.price}} is probably
+                        the cheapest price that you will get in the market for something as good as the {{automobile.name}}!</h3>
+                    <hr>
+
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+
+    </div>
+</div>
+
+
+<div class="container mx-5 px-5">
+
+    <h2 class="text-center">Don't Forget Products Section!</h2>
+    <div class="container mx-5 px-5">
+        {% for product in products %}
+        <div class="card-columns mt-3">
+            <div class="card" id="card2">
+                <img class="card-img-top" src="/{{product.image}}" alt="Product Image">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-center text-danger">Here's something about the {{product.name}}.</h5>
+                    <p class="card-text text-center text-dark">There are a lot of things to know about {{product.name}} but we will shorten them by quickly describing
+                        it with its description. The seller says these words about {{product.name}}, "{{product.description}}".</p>
+                    <hr>
+                    <h3 class="card-title">{% if product.status == 'available' %}
+                        <h3 class="text-success fw-bold text-center">
+                            And Yes! {{product.name}} is currently{{product.status}}!
+                        </h3>
+                        {% else %}
+                        <h3 class="text-danger fw-bold text-center">
+                            Sadly, {{product.name}} is currently {{product.status}}! But not for long!
+                        </h3>
+                        {% endif %}
+                    </h3>
+                    <h3 class="card-title text-center">Since we provide the best value to our customer's goods,
+                        best price for {{product.name}}, the best throughout the market is ${{product.price}}. So, Go Grab {{product.name}} Now!</h3>
+                    <hr>
+
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+
+    </div>
+</div>
+
+
+{% endblock %}
+

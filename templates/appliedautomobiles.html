@@ -1,0 +1,81 @@
+{% extends 'adminbase.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<link type="text/css" rel="stylesheet" href="{% static '/css/appliedautomobilestyles.css' %}">
+<link type="text/css" rel="stylesheet" href="{% static '/css/adminpagesstyles.css' %}">
+
+<p class="mt-5"> " </p>
+<div class="container mt-5" id="topContainer">
+
+    <ul class="list-group list-group-horizontal-md" id="toplist">
+        <li class="list-group-item" id="listheading"><h2 class="heading text-center text-light">
+            Automobile Post Requests</h2></li>
+    </ul>
+
+</div>
+
+
+<div id="body">
+    {% for appliedautomobile in appliedautomobiles %}
+
+    <div class="container mt-5 mb-5" id="mainWrapper">
+        <div class="d-flex justify-content-center row">
+            <div class="col-md-10" id="secondaryWrapper">
+                <div class="row p-2 border rounded" id="itemWrapper">
+                    <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image"
+                                                    src="/{{appliedautomobile.image}}"></div>
+                    <div class="col-md-6 mt-1">
+                        <h5 class="text-center text-danger">Assigned ID: {{appliedautomobile.id}}</h5>
+                        <h5 class="text-center text-primary">{{appliedautomobile.name}}</h5>
+
+
+                        <p class="text-justify text-center para text-warning">{{appliedautomobile.description}}<br><br>
+                        </p>
+                    </div>
+                    <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+                        <div class="d-flex flex-row align-items-center">
+                            <h4 class="mr-1">${{appliedautomobile.price}}</h4><br><br>
+
+                        </div>
+
+                        <div id="body_4">
+                            {% if appliedautomobile.status == 'available' %}
+                            <h3 class="text-success fw-bold">
+                                {{appliedautomobile.status}}
+                            </h3>
+                            {% else %}
+                            <h3 class="text-danger fw-bold">
+                                {{appliedautomobile.status}}
+
+                                {% endif %}
+                            </h3>
+                        </div>
+                        <div class="align-items-center align-content-center col-md-3 border-left d-inline">
+                            <form action="{% url 'approveautomobile' appliedautomobile.id %}" method="post"
+                                  class="d-inline">
+                                {% csrf_token %}
+                                <input type="submit" class="btn btn-success d-inline mt-3" value="Approve">
+                            </form>
+                            <form action="{% url 'declineautomobile' appliedautomobile.id %}" method="post"
+                                  class="d-inline">
+                                {% csrf_token %}
+                                <input type="submit" class="btn btn-danger d-inline mt-3" value="Decline">
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+
+{% endblock %}

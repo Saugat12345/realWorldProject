@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+<div class="container border border-success bg-secondary text-white">
+
+    <form method="POST" class="post-form m-3" action="#">
+        {% csrf_token %}
+        <div class="form-group mt-3">
+            <label for="emailentry">Email address:</label>
+            <input type="email" name="email" class="form-control" id="emailentry" placeholder="name@example.com">
+        </div>
+        <div class="form-group mt-3">
+            <label for="nameentry">Full Name:</label>
+            <input type="text" name="name" class="form-control" id="nameentry">
+        </div>
+        <div class="form-group mt-3">
+            <label for="addressentry">Address:</label>
+            <input type="text" name="address" class="form-control" id="addressentry">
+        </div>
+        <div class="form-group mt-3">
+            <label for="stateSelector">State:</label>
+            <select class="form-control" name="state" id="stateSelector">
+                <option>Pradesh-1</option>
+                <option>Pradesh-2</option>
+                <option>Bagmati Province</option>
+                <option>Gandaki Province</option>
+                <option>Lumbini Province</option>
+                <option>Karnali Province</option>
+                <option>SudurPaschim Province</option>
+            </select>
+        </div>
+        <div class="form-group mt-3">
+            <label for="courseSelector">Please select a course:</label>
+            <select multiple name="course" class="form-control" id="courseSelector">
+                <option>Farm Management</option>
+                <option>Market Analysis</option>
+                <option>Crop Cultivation</option>
+                <option>Fish Farming</option>
+                <option>Horticulture</option>
+            </select>
+        </div>
+        <div class="form-group mt-3">
+            <label for="messages">Any Messages?:</label>
+            <textarea name="message" class="form-control" id="messages" rows="3"
+                      placeholder="Anything more info you wish to provide!"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success mt-3">Submit</button>
+        <button type="reset" class="btn btn-danger mt-3">Reset</button>
+    </form>
+</div>
+
+
+{% endblock %}

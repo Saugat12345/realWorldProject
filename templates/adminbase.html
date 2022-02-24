@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin Base</title>
+    <link type="text/css" rel="stylesheet" href="{% static '/css/adminbasestyles.css' %}">
+
+    <link type="text/css" rel="stylesheet" href="{% static '/css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <!--    Font Awesome cdn links-->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-image navbar-dark py-3 fixed-top" id="mainnav" style="
+    background-image: url('{% static '/images/adminnavbar.jpg' %}');">
+
+    <div class="container">
+        <a href="/myadmin/adminhome/" class="navbar-brand"><img width="60" height="50" alt=""
+                                                                src="{% static '/images/main_logo.png' %}"></a>
+        <button
+                class="navbar-togler bg-black"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navmenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item mx-5">
+                    <a class="nav-link" id="navapp" href="/myadmin/adminhome/adminapps/">
+                        <i class="fab fa-medapps fa-spin fa-1x"></i> Apps</a>
+                </li>
+                <li class="nav-item mx-5">
+                    <a class="nav-link" id="navfeedbacks" href="/myadmin/adminhome/adminfeedbacks/">
+                        <i class="fas fa-comments-dollar fa-spin fa-1x"></i> Feedbacks</a>
+                </li>
+                <li class="nav-item mx-5">
+                    <a class="nav-link" id="navadmins" href="/myadmin/adminhome/adminadmins/"><i
+                            class="fas fa-users-cog fa-spin fa-1x"> </i>Admins</a>
+                </li>
+                <li class="nav-item mx-5">
+                    <a class="nav-link" id="navrequests" href="/myadmin/adminhome/adminrequests/"><i
+                            class='fas fa-praying-hands fa-spin fa-1x'></i> Requests</a>
+                </li>
+                <li class="nav-item mx-5">
+                    <a class="nav-link text-info" href="/">View Site</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+{% block content %}
+{% endblock %}
+</body>
+</html>

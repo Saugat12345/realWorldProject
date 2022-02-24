@@ -1,0 +1,72 @@
+{% extends 'adminbase.html' %}
+
+{% load static %}
+
+{% block content %}
+<link type="text/css" rel="stylesheet" href="{% static '/css/appliedproducts.css' %}">
+
+
+<div class="container mt-5 pt-5">
+    <h2 class="text-center text-danger">These products have been applied for posting</h2>
+
+</div>
+
+
+<div id="body">
+    {% for appliedproduct in appliedproducts %}
+
+    <div class="container mt-5 mb-5" id="mainWrapper">
+        <div class="d-flex justify-content-center row">
+            <div class="col-md-10" id="secondaryWrapper">
+                <div class="row p-2 border rounded" id="itemWrapper">
+                    <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image"
+                                                    src="/{{appliedproduct.image}}"></div>
+                    <div class="col-md-6 mt-1">
+                        <h5 class="text-center text-danger">Assigned ID: {{appliedproduct.id}}</h5>
+                        <h5 class="text-center text-primary">{{appliedproduct.name}}</h5>
+
+
+                        <p class="text-justify text-center para text-warning">{{appliedproduct.description}}<br><br>
+                        </p>
+                    </div>
+                    <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+                        <div class="d-flex flex-row align-items-center">
+                            <h4 class="mr-1">${{appliedproduct.price}}</h4><br><br>
+
+                        </div>
+
+                        <div id="body_4">
+                            {% if appliedproduct.status == 'available' %}
+                            <h3 class="text-success fw-bold">
+                                {{appliedproduct.status}}
+                            </h3>
+                            {% else %}
+                            <h3 class="text-danger fw-bold">
+                                {{appliedproduct.status}}
+
+                                {% endif %}
+                            </h3>
+                        </div>
+                        <div class="align-items-center align-content-center col-md-3 border-left d-inline">
+                            <form action="{% url 'approveproduct' appliedproduct.id %}" method="post" class="d-inline">
+                                {% csrf_token %}
+                                <input type="submit" class="btn btn-success mt-2" value="Approve">
+                            </form>
+                            <form action="{% url 'declineproduct' appliedproduct.id %}" method="post" class="d-inline">
+                                {% csrf_token %}
+                                <input type="submit" class="btn btn-danger mt-2" value="Decline">
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

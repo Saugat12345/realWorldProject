@@ -1,0 +1,45 @@
+{% extends 'adminbase.html' %}
+
+{% load static %}
+
+{% block content %}
+<link type="text/css" rel="stylesheet" href="{% static '/css/appliedworkers.css' %}">
+
+<div class="container mt-5 pt-5">
+<h2 class="text-center text-primary">These people have requested to post for a vacancy!</h2>
+
+<table class="table table-sm table-hover table-success my-3 mx-3" id="table">
+    <tr class="table-row table-success">
+        <th class="table-heading text-center">ID</th>
+        <th class="table-heading text-center">Name</th>
+        <th class="table-heading text-center">Rate</th>
+        <th class="table-heading text-center">Status</th>
+        <th class="table-heading text-center">Actions</th>
+
+
+    </tr>
+
+    {% for appliedworker in appliedworkers %}
+    <tr class="table-row table-warning">
+        <td class="table-data text-center">{{appliedworker.id}}</td>
+        <td class="table-data text-center">{{appliedworker.name}}</td>
+        <td class="table-data text-center">{{appliedworker.rate}}</td>
+        <td class="table-data text-center">{{appliedworker.status}}</td>
+        <td class="table-data text-center">
+            <form action="{% url 'approveworker' appliedworker.id %}" method="post" class="d-inline">
+                {% csrf_token %}
+                <input type="submit" class="btn btn-success" value="Approve">
+            </form>
+            <form action="{% url 'declineworker' appliedworker.id %}" method="post" class="d-inline">
+                {% csrf_token %}
+                <input type="submit" class="btn btn-danger" value="Decline">
+            </form>
+        </td>
+
+
+    </tr>
+
+    {% endfor %}
+</table>
+</div>
+{% endblock %}

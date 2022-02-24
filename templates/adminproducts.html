@@ -1,0 +1,60 @@
+{% extends 'adminbase.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<link type="text/css" rel="stylesheet" href="{% static '/css/adminproducts.css' %}">
+<link type="text/css" rel="stylesheet" href="{% static '/css/workersstyles.css' %}">
+
+
+<div class="container mt-5 pt-5" id="mainContainer">
+
+    <h2 class="text-center mt-3 mb-3">Our Products
+        <form action="{% url 'addproduct'%}" method="post" class="d-inline">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-success" value="Add">
+        </form>
+    </h2>
+
+    {% for product in products %}
+
+
+    <div class="card-deck {% cycle 'table-warning' 'table-danger' %}">
+
+        <div class="card">
+            <img class="card-img-top" src="/{{product.image}}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title text-danger">Assigned ID: {{product.id}} </h5>
+                <h5 class="card-title text-warning">{{product.name}}</h5>
+                <p class="card-text text-primary">{{product.description}}</p>
+                <p class="card-text"><small class="text-muted">
+
+                    {% if product.status == 'available' %}
+                    <h2 class="text-success">{{product.status}}</h2>
+                    {% else %}
+                    <h2 class="text-danger">{{product.status}}</h2>
+                    {% endif %}
+
+                </small></p>
+                <p class="card-text text-info">{{product.price}}</p>
+            </div>
+            <div class="card-footer">
+                <form action="{% url 'updateproduct' product.id %}" method="post" class="d-inline">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-warning" value="Update">
+                </form>
+                <form action="{% url 'deleteproduct' product.id %}" method="post" class="d-inline">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-danger" value="Delete">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}
+

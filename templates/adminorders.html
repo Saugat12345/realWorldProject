@@ -1,0 +1,121 @@
+{% extends 'adminbase.html' %}
+
+{% load static %}
+
+{% block content %}
+<link type="text/css" rel="stylesheet" href="{% static '/css/adminorders.css' %}">
+
+<div class="container mt-5 pt-5" id="mainContainer">
+
+    <h2 class="text-center">These Automobiles have been Ordered!</h2>
+    <table class="table table-hover">
+        <thead>
+        <tr class="table-primary">
+            <th class="table-heading text-center text-danger">ID</th>
+            <th class="table-heading text-center text-danger">Hire Date</th>
+            <th class="table-heading text-center text-danger">Total Price</th>
+            <th class="table-heading text-center text-danger">Customer Remark</th>
+            <th class="table-heading text-center text-danger">Customer Name</th>
+            <th class="table-heading text-center text-danger">Automobile Name</th>
+            <th class="table-heading text-center text-danger">Actions</th>
+        </tr>
+        </thead>
+        {% for automobile_order in automobile_orders %}
+        <tbody>
+        <tr class="{% cycle 'table-info' 'table-danger' %}">
+            <td class="table-data text-center text-dark">{{automobile_order.id}}</td>
+            <td class="table-data text-center text-dark">{{automobile_order.order_date}}</td>
+            <td class="table-data text-center text-dark">${{automobile_order.total_price}}</td>
+            <td class="table-data text-center text-dark">{{automobile_order.remarks}}</td>
+            <td class="table-data text-center text-dark">{{automobile_order.customer_name}}</td>
+            <td class="table-data text-center text-dark">{{automobile_order.automobile_name}}</td>
+            <td class="table-data text-center text-dark">
+                <form action="{% url 'deleteautomobileorder' automobile_order.id %}" method="post" class="d-inline">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-danger mb-1" value="Delete">
+                </form>
+            </td>
+
+        </tr>
+
+        </tbody>
+
+        {% endfor %}
+    </table>
+
+    <h2 class="text-center">These Hiring Requests were placed!</h2>
+    <table class="table table-hover">
+        <thead>
+        <tr class="table-primary">
+            <th class="table-heading text-center text-danger">ID</th>
+            <th class="table-heading text-center text-danger">Hire Date</th>
+            <th class="table-heading text-center text-danger">Total Price</th>
+            <th class="table-heading text-center text-danger">Customer Remark</th>
+            <th class="table-heading text-center text-danger">Customer Name</th>
+            <th class="table-heading text-center text-danger">Worker Name</th>
+            <th class="table-heading text-center text-danger">Actions</th>
+        </tr>
+        </thead>
+        {% for worker_order in worker_orders %}
+        <tbody>
+        <tr class="{% cycle 'table-info' 'table-danger' %}">
+            <td class="table-data text-center text-dark">{{worker_order.id}}</td>
+            <td class="table-data text-center text-dark">{{worker_order.order_date}}</td>
+            <td class="table-data text-center text-dark">${{worker_order.total_price}}</td>
+            <td class="table-data text-center text-dark">{{worker_order.remarks}}</td>
+            <td class="table-data text-center text-dark">{{worker_order.customer_name}}</td>
+            <td class="table-data text-center text-dark">{{worker_order.worker_name}}</td>
+            <td class="table-data text-center text-dark">
+                <form action="{% url 'deleteworkerorder' worker_order.id %}" method="post" class="d-inline">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-danger mb-1" value="Delete">
+                </form>
+            </td>
+
+        </tr>
+
+        </tbody>
+        {% endfor %}
+    </table>
+
+
+</div>
+<h2 class="text-center">These are the Product Orders Received!</h2>
+<table class="table table-hover">
+    <thead>
+    <tr class="table-primary">
+        <th class="table-heading">ID</th>
+        <th class="table-heading">Order Date</th>
+        <th class="table-heading">Total Price</th>
+        <th class="table-heading">Quantity</th>
+        <th class="table-heading">Customer Remark</th>
+        <th class="table-heading">Customer Name</th>
+        <th class="table-heading">Product Name</th>
+        <th class="table-heading">Actions</th>
+    </tr>
+    </thead>
+    {% for order in orders %}
+    <tbody>
+    <tr class="table-row {% cycle 'table-warning' 'table-danger' %} text-center">
+        <td class="table-data">{{order.id}}</td>
+        <td class="table-data">{{order.order_date}}</td>
+        <td class="table-data">${{order.total_price}}</td>
+        <td class="table-data">{{order.quantity}}</td>
+
+        <td class="table-data">{{order.remarks}}</td>
+        <td class="table-data">{{order.customer_name}}</td>
+        <td class="table-data">{{order.product_name}}</td>
+
+        <td class="table-data">
+
+            <form action="{% url 'deleteorder' order.id %}" method="post" class="d-inline">
+                {% csrf_token %}
+                <input type="submit" class="btn btn-danger mb-1" value="Delete">
+            </form>
+        </td>
+    </tr>
+
+    </tbody>
+    {% endfor %}
+</table>
+{% endblock %}

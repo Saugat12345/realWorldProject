@@ -1,0 +1,5 @@
+.body{
+    background: url("/static/images/wishlistbg.jpg") fixed no-repeat;
+    background-size: fit;
+    color: lime;
+}

@@ -1,0 +1,39 @@
+
+
+
+#card_deck{
+    border: 5px solid black;
+    display: inline-block;
+    margin: 2% 2%;
+    height: 500px;
+    overflow: hidden;
+
+}
+#card_img{
+    height: 50%;
+}
+
+#card_body{
+    height: 50%;
+    background-color: darkgrey;
+    text-align: center;
+    margin: none;
+}
+a:link {
+  text-decoration: none;
+}
+#body_1{
+    height: 10%;
+    overflow: hidden;
+}
+#body_2{
+    height: 30%;
+    overflow: hidden;
+    }
+
+#body_3,#body_4,#body_5{
+    height: 20%;
+    overflow: hidden;
+}
+
+

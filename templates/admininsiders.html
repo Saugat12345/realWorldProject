@@ -1,0 +1,57 @@
+{% extends 'adminbase.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<link type="text/css" rel="stylesheet" href="{% static '/css/admininsiders.css' %}">
+<link type="text/css" rel="stylesheet" href="{% static '/css/workersstyles.css' %}">
+
+
+<div class="container mt-5 pt-5" id="mainContainer">
+    <h2 class="text-center mt-2 pb-2">These are our insiders!
+
+        <a href="/insiders/insiderregister/">
+            <button class="btn btn-success">Add</button>
+        </a>
+    </h2>
+
+    <table class="table table-sm table-hover table-success mt-5" id="table">
+
+        <tr class="table-row table-primary">
+            <th class="table-heading">ID</th>
+            <th class="table-heading">First Name</th>
+            <th class="table-heading">Last Name</th>
+            <th class="table-heading">Last Login</th>
+            <th class="table-heading">Email</th>
+            <th class="table-heading">Superuser?</th>
+            <th class="table-heading">Date Joined</th>
+            <th class="table-heading">Actions</th>
+
+        </tr>
+
+        {% for insider in insiders %}
+        <tr class="table-row {% cycle 'table-warning' 'table-danger' %}">
+            <td class="table-data">{{insider.id}}</td>
+            <td class="table-data">{{insider.first_name}}</td>
+            <td class="table-data">{{insider.last_name}}</td>
+            <td class="table-data">{{insider.last_login}}</td>
+            <td class="table-data">{{insider.email}}</td>
+            <td class="table-data">{{insider.is_superuser}}</td>
+            <td class="table-data">{{insider.date_joined}}</td>
+
+
+            <td class="table-data">
+
+                <form action="{% url 'deleteinsider' insider.id %}" method="post" class="d-inline">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-danger mb-1" value="Delete">
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+
+{% endblock %}

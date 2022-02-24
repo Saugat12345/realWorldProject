@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<link type="text/css" rel="stylesheet" href="{% static '/css/automobilestyles.css' %}">
+
+
+<div class="container navbar text-center d-inline">
+    <div class="contaner d-inline">
+        <h2 class="heading text-info text-center">Available Automobiles</h2>
+    </div>
+    <div class="container d-inline">
+        <a href="addautomobile/" class="text-danger">Request For Post</a>
+    </div>
+
+</div>
+
+
+<div id="body">
+    {% for automobile in automobiles %}
+
+
+    <div class="container mt-5 mb-5" id="mainWrapper">
+        <div class="d-flex justify-content-center row">
+            <div class="col-md-10" id="secondaryWrapper">
+                <div class="row p-2 border rounded" id="itemWrapper">
+                    <div class="col-md-3 mt-1 text-center"><img class="img-fluid img-responsive rounded product-image"
+                                                                src="/{{automobile.image}}"></div>
+                    <div class="col-md-6 mt-4">
+                        <h5 class=" text-center">Name : {{automobile.name}}</h5>
+                        <p class="text-justify text-truncate para mb-0  text-center">Description :
+                            {{automobile.description}}<br></p>
+                    </div>
+                    <div class="align-items-center align-content-center col-md-3 border-left mt-1  text-center">
+
+                        <h4 class="text-center">Price : ${{automobile.price}}</h4><br>
+
+                        {% if automobile.status == 'available' %}
+                        <h6 class="text-danger">Free Shipping</h6>
+                        {% else %}
+                        <h6 class="text-primary">No Shipping</h6>
+                        {% endif %}
+                        <div id="body_4">
+                            {% if automobile.status == 'available' %}
+                            <h3 class="text-success fw-bold">
+                                {{automobile.status}}
+                            </h3>
+                            {% else %}
+                            <h3 class="text-danger fw-bold">
+                                {{automobile.status}}
+
+                                {% endif %}
+                            </h3>
+                        </div>
+                        <div class="d-flex flex-column mt-4" id="body_5">
+                            {% if automobile.status == 'available' %}
+                            {% if user.is_authenticated %}
+
+                            <div class="container pb-2">
+                                <form action="{% url 'finalizeautomobile' automobile.id %}" class="d-inline">
+                                    {% csrf_token %}
+                                    <input type="submit" class="btn btn-primary" value="Order">
+                                </form>
+
+
+                                <form action="{% url 'saveautomobilewishlist' automobile.id %}" method="post"
+                                      class="d-inline">
+                                    {% csrf_token %}
+                                    <input type="submit" class="btn btn-success" value="Wishlist">
+                                </form>
+                            </div>
+
+                            {% else %}
+                            <a href="/insiders/">Only Insiders Can Order</a>
+                            {% endif %}
+
+
+                            {% else %}
+                            {% if user.is_authenticated %}
+                            <form action="{% url 'saveautomobilewishlist' automobile.id %}" method="post"
+                                  class="d-inline">
+                                {% csrf_token %}
+                                <input type="submit" class="btn btn-success" value="Wishlist">
+                            </form>
+                            {% else %}
+                            <a href="/insiders/">Only Insiders Can Add To Cart</a>
+                            {% endif %}
+
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<div class="container mt-5 pt-5">
+
+</div>
+<div class="container mt-5 pt-5">
+
+</div>
+<div class="container mt-5 pt-5">
+
+</div>
+<div class="container mt-5 pt-5">
+
+</div>
+<div class="container mt-5 pt-5">
+
+</div>
+{% endblock %}
+

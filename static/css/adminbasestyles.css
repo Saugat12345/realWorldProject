@@ -1,0 +1,23 @@
+.a{
+    text-decoration : none;
+}
+#navapp:hover{
+    color: lime;
+    font-size: medium;
+}
+#navfeedbacks:hover{
+    color: red;
+    font-size: medium;
+}
+#navadmins:hover{
+    color: yellow;
+    font-size: medium;
+}
+#navrequests:hover{
+    color: blue;
+    font-size: medium;
+}
+.body{
+    background: url("/static/images/adminbasebg.jpg") fixed repeat;
+    background-size: fit;
+}

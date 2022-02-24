@@ -1,0 +1,38 @@
+{% extends 'adminbase.html' %}
+
+{% load static %}
+
+{% block content %}
+<link type="text/css" rel="stylesheet" href="{% static '/css/adminfeedbacks.css' %}">
+
+<div class="showupdivs mt-5 pt-5" id="feedbacksDiv">
+    <h2 class="text-center pb-4 text-info">These are the feedbacks we received!</h2>
+    {% for feedback in feedbacks %}
+
+    <h4 class="{% cycle 'table-warning' 'table-danger' %} text-center">{{feedback.name}} felt
+        {% if feedback.remarks == 'Epic' %}
+        <span class="text-success"> {{feedback.remarks}}</span>
+        {% elif feedback.remarks == 'Good' %}
+        <span class="text-primary"> {{feedback.remarks}}</span>
+        {% elif feedback.remarks == 'Fine' %}
+        <span class="text-info"> {{feedback.remarks}}</span>
+        {% elif feedback.remarks == 'Bad' %}
+        <span class="text-warning"> {{feedback.remarks}}</span>
+        {% else %}
+        <span class="text-danger"> {{feedback.remarks}}</span>
+        {% endif %}
+
+
+        and says,"<span class="text-success {% cycle 'text-success' 'text-danger' 'text-warning' %}">{{feedback.message}}</span>
+        "</h4>
+        <form action="{% url 'deletefeedback' feedback.id %}" method="post" class="d-inline">
+        {% csrf_token %}
+        <input type="submit" class="btn btn-danger" value="Delete">
+    </form>
+    <hr>
+
+
+    {% endfor %}
+</div>
+
+{% endblock %}

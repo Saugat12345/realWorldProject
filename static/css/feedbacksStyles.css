@@ -1,0 +1,42 @@
+body{
+
+   height: 160%;
+   width: 100%;
+   color: white;
+
+}
+#alternateBody{
+
+    width: 100%;
+    height: 10%;
+
+
+}
+#mainContainer{
+}
+.button{
+    border-radius: 15px;
+    background-color: lime;
+    padding: 5%
+    overflow: hidden;
+    border: lime;
+
+}
+#resetbtn{
+    background-color: red;
+}
+#resetbtn:hover{
+    background-color: darkred;
+}
+.button:hover{
+    background-color: darkgreen;
+    border-radius: 20px;
+}
+#btnholder{
+    padding: 4% 0 4% 38%;
+}
+.body{
+    background-image: url("https://wallpapercave.com/wp/wp4854160.jpg");
+}
+
+

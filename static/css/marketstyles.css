@@ -1,0 +1,17 @@
+.body{
+    background: url("/static/images/marketbg.jpg") fixed;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-size: 100% 100%;
+    color: lime;
+}
+#card1{
+    border-left : red 8px solid;
+    border-right : blue 8px solid;
+}
+#card2{
+    border-left : yellow 8px solid;
+    border-right : green 8px solid;
+}
+
+

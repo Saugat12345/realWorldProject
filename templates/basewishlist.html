@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<link type="text/css" rel="stylesheet" href="{% static '/css/wishliststyles.css' %}">
+<h1 class="display-2 text-center text-info">Your Cart Items Are Displayed Here</h1>
+<div class="container p-4">
+    <p class="text-center text-primary">We will notify you when the items that are currently unavailable
+        become available. Till then, you can browse our website and search for other useful stuffs.
+        But stick around! Because our admins are always active and update the contents of the site very
+        often. So, don't miss your chance!</p>
+</div>
+
+
+<h2 class="text-center">Here's Your Product Wishlist</h2>
+<div class="container" id="mainContainer">
+    <table class="table table-sm table-hover table-success" id="table">
+        <tr class="table-row table-primary">
+<!--            <th class="table-heading text-center">Customer ID</th>-->
+<!--            <th class="table-heading text-center">Your Name</th>-->
+            <th class="table-heading text-center">Wish Name</th>
+            <th class="table-heading text-center">Price ($)</th>
+            <th class="table-heading text-center">Status</th>
+            <th class="table-heading text-center">Wish Date</th>
+            <th class="table-heading text-center">Actions</th>
+        </tr>
+
+        {% for productwish in productwishlist %}
+        {% if productwish.customer_id == current_userId %}
+        <tr class="table-row {% cycle 'table-warning' 'table-danger' %}">
+<!--            <td class="table-data text-center">{{productwish.customer_id}}</td>-->
+<!--            <td class="table-data text-center">{{productwish.customer_name}}</td>-->
+            <td class="table-data text-center">{{productwish.product_name}}</td>
+            <td class="table-data text-center">{{productwish.price}}</td>
+            <td class="table-data text-center">{{productwish.product_status}}</td>
+            <td class="table-data text-center">{{productwish.date}}</td>
+
+
+            <td class="table-data text-center">
+                {% if productwish.product_status == 'available' %}
+
+                <form action="{% url 'finalize' productwish.product_id %}" class="d-inline">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-info" value="Order">
+                </form>
+
+
+                <form action="{% url 'deleteproductwish' productwish.id %}" method="post" class="d-inline">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-warning" value="Delete">
+                </form>
+
+                {% else %}
+
+                <form action="{% url 'deleteproductwish' productwish.id %}" method="post" class="d-inline">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-warning" value="Delete">
+                </form>
+
+                {% endif %}
+            </td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+
+
+    </table>
+</div>
+
+
+<h2 class="text-center">Here's Your Automobile Wishlist</h2>
+<div class="container" id="mainContainer">
+    <table class="table table-sm table-hover table-success" id="table">
+        <tr class="table-row table-primary">
+<!--            <th class="table-heading text-center">Customer ID</th>-->
+<!--            <th class="table-heading text-center">Your Name</th>-->
+            <th class="table-heading text-center">Wish Name</th>
+            <th class="table-heading text-center">Price ($)</th>
+            <th class="table-heading text-center">Status</th>
+            <th class="table-heading text-center">Wish Date</th>
+            <th class="table-heading text-center">Actions</th>
+        </tr>
+
+        {% for autowish in automobilewishlist %}
+        {% if autowish.customer_id == current_userId %}
+        <tr class="table-row {% cycle 'table-warning' 'table-danger' %}">
+<!--            <td class="table-data text-center">{{autowish.customer_id}}</td>-->
+<!--            <td class="table-data text-center">{{autowish.customer_name}}</td>-->
+            <td class="table-data text-center">{{autowish.automobile_name}}</td>
+            <td class="table-data text-center">{{autowish.price}}</td>
+            <td class="table-data text-center">{{autowish.automobile_status}}</td>
+            <td class="table-data text-center">{{autowish.date}}</td>
+
+
+            <td class="table-data text-center">
+                {% if autowish.automobile_status == 'available' %}
+
+                <form action="{% url 'finalizeautomobile' autowish.automobile_id %}" class="d-inline">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-info" value="Order">
+                </form>
+
+                <form action="{% url 'deleteautomobilewish' autowish.id %}" method="post" class="d-inline">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-danger" value="Delete">
+                </form>
+
+                {% else %}
+
+
+                <form action="{% url 'deleteautomobilewish' autowish.id %}" method="post" class="d-inline">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-danger" value="Delete">
+                </form>
+
+                {% endif %}
+            </td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+
+
+    </table>
+</div>
+<div class="container mt-5 pt-5">
+
+
+</div>
+<div class="container mt-5 pt-5">
+
+
+</div>
+
+{% endblock %}

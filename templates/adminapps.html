@@ -1,0 +1,26 @@
+{% extends 'adminbase.html' %}
+
+{% load static %}
+
+{% block content %}
+<link type="text/css" rel="stylesheet" href="{% static '/css/adminapps.css' %}">
+
+<div class="showupdivs pt-5 mt-5" id="appsDiv">
+    <h2 class="text-center mt-5">Here are our apps</h2>
+    <ul class="list-group text-center mx-5">
+        <a href="/myadmin/adminworkers/"
+           class="list-group-item list-group-item-action list-group-item-warning">Workers ({{workers_no}})</a>
+        <a href="/myadmin/adminautomobiles/"
+           class="list-group-item list-group-item-action list-group-item-info">Automobiles ({{automobiles_no}})</a>
+        <a href="/myadmin/adminproducts/"
+           class="list-group-item list-group-item-action list-group-item-success">Products ({{products_no}})</a>
+        <a href="/myadmin/adminstudents/"
+           class="list-group-item list-group-item-action list-group-item-warning">Students ({{students_no}})</a>
+        <a href="/myadmin/admininsiders/"
+           class="list-group-item list-group-item-action list-group-item-danger">Insiders ({{insiders_no}})</a>
+        <a href="/myadmin/adminorders/"
+           class="list-group-item list-group-item-action list-group-item-success">Orders ({{orders_no}})</a>
+    </ul>
+</div>
+
+{% endblock %}

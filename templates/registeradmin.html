@@ -1,0 +1,74 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+{% load static %}
+
+<link type="text/css" rel="stylesheet" href="{% static '/css/registeradmin.css' %}">
+
+
+<div class="container register">
+    <div class="row">
+        <div class="col-md-3 register-left">
+            <img src="{% static '/images/main_logo.png' %}" alt=""/>
+            <h3>Welcome</h3>
+            <p>Help us manage this corporate as an Admin!</p>
+
+        </div>
+        <div class="col-md-9 register-right bg-success">
+
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <h3 class="register-heading">Welcome Aboard</h3>
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row register-form">
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" name="first_name" class="form-control" placeholder="First Name *"
+                                           value=""/>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="last_name" class="form-control" placeholder="Last Name *"
+                                           value=""/>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="email" name="email" class="form-control" placeholder="Your Email *"
+                                           value=""/>
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="email" name="username" class="form-control" placeholder="Username *"
+                                           value=""/>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <input type="password" name="password1" class="form-control"
+                                           placeholder="Password *" value=""/>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" name="password2" class="form-control"
+                                           placeholder="Confirm Password *" value=""/>
+                                </div>
+                                <input type="submit" class="btnRegister" value="Register"/>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+                <div class="container">
+                    {% for message in messages %}
+                    <h3>{{message}}</h3>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

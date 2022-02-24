@@ -1,0 +1,54 @@
+{% extends 'adminbase.html' %}
+
+{% load static %}
+
+{% block content %}
+<link type="text/css" rel="stylesheet" href="{% static '/css/adminstudents.css' %}">
+
+<div class="container mt-5 pt-5" id="mainContainer">
+    <h2 class="text-center text-primary">These are our Students!
+        <form action="{% url 'addstudent' %}" method="post" class="d-inline">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-success" value="Add">
+        </form>
+    </h2>
+    <table class="table table-sm table-hover table-success mt-5" id="table">
+
+        <tr class="table-row table-primary">
+            <th class="table-heading">ID</th>
+            <th class="table-heading">Name</th>
+            <th class="table-heading">Address</th>
+            <th class="table-heading">State</th>
+            <th class="table-heading">Course</th>
+            <th class="table-heading">Message</th>
+            <th class="table-heading">Actions</th>
+        </tr>
+        {% for student in students %}
+        <tr class="table-row {% cycle 'table-warning' 'table-danger' %}">
+            <td class="table-data">{{student.id}}</td>
+            <td class="table-data">{{student.name}}</td>
+            <td class="table-data">{{student.address}}</td>
+            <td class="table-data">{{student.state}}</td>
+
+            <td class="table-data">{{student.course}}</td>
+            <td class="table-data">{{student.message}}</td>
+
+            <td class="table-data">
+                <form action="{% url 'updatestudent' student.id %}" method="post" class="d-inline">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-warning mb-1" value="Update">
+                </form>
+                <form action="{% url 'deletestudent' student.id %}" method="post" class="d-inline">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-danger mb-1" value="Delete">
+                </form>
+            </td>
+        </tr>
+
+
+        {% endfor %}
+    </table>
+</div>
+
+
+{% endblock %}

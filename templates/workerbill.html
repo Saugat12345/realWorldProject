@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<link type="text/css" rel="stylesheet" href="{% static '/css/automobilebill.css' %}">
+
+<div class="container mt-5 mb-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-8">
+            <div class="card" id="card">
+                <div class="text-left logo p-2 px-5"><img src="{% static '/images/main_logo.png' %}" width="50"></div>
+                <div class="invoice p-5">
+                    <h5>Your Request Confirmed!</h5> <span
+                        class="font-weight-bold d-block mt-4">Hello, {{customer_name}}</span>
+                    <span>You request has been confirmed and will be made available in next four days!</span>
+                    <div class="payment border-top mt-3 mb-3 border-bottom table-responsive">
+                        <table class="table table-borderless">
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <div class="py-2"><span class="d-block text-muted">Order Date</span>
+                                        <span>{{date}}</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="py-2"><span class="d-block text-muted">Order No</span>
+                                        <span>{{id}}</span></div>
+                                </td>
+
+
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="product border-bottom table-responsive">
+                        <table class="table table-borderless">
+                            <tbody>
+                            <tr>
+
+                                <td width="60%"><span class="font-weight-bold">{{worker_name}}</span>
+
+                                </td>
+
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row d-flex justify-content-end">
+                        <div class="col-md-5">
+                            <table class="table table-borderless">
+                                <tbody class="totals">
+                                <tr>
+                                    <td>
+                                        <div class="text-left"><span class="text-muted">Subtotal</span></div>
+                                    </td>
+                                    <td>
+                                        <div class="text-right"><span>${{total}}</span></div>
+                                    </td>
+                                </tr>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <p>We will be sending shipping confirmation email when the worker is ready!</p>
+                    <p class="font-weight-bold mb-0">Hoping to help you in future!</p> <span class="text-warning">AGRO </span><span class="text-success">NEPAL</span>
+                </div>
+                <div class="d-flex justify-content-between footer p-3">
+                    <span>Need Help? visit our <a href="/remarks/"> help center</a></span>
+                    <span class="text-danger">Permitted to Print</span>
+                    <span>{{date}}</span></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

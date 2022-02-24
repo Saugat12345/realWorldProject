@@ -1,0 +1,137 @@
+
+
+
+#card_deck{
+    border: 5px solid black;
+    display: inline-block;
+    margin: 2% 2%;
+    height: 500px;
+    overflow: hidden;
+
+}
+#card_img{
+    height: 50%;
+}
+
+#card_body{
+    height: 50%;
+    background-color: darkgrey;
+    text-align: center;
+    margin: none;
+}
+a:link {
+  text-decoration: none;
+}
+#body_1{
+    height: 10%;
+    overflow: hidden;
+}
+#body_2{
+    height: 30%;
+    overflow: hidden;
+    }
+
+#body_3,#body_4,#body_5{
+    height: 20%;
+    overflow: hidden;
+}
+
+body {
+    background: url("/static/images/stonebg.jpg") no-repeat fixed;
+    color: white;
+}
+
+.ratings i {
+    font-size: 16px;
+    color: red
+}
+
+.strike-text {
+    color: red;
+    text-decoration: line-through
+}
+
+.product-image {
+    width: 100%
+}
+
+.dot {
+    height: 7px;
+    width: 7px;
+    margin-left: 6px;
+    margin-right: 6px;
+    margin-top: 3px;
+    background-color: blue;
+    border-radius: 50%;
+    display: inline-block
+}
+
+.spec-1 {
+    color: #938787;
+    font-size: 15px
+}
+
+h5 {
+    font-weight: 400
+}
+
+.para {
+    font-size: 16px
+}
+#itemWrapper{
+    background: url("/static/images/woodbg.jpg") 50% 0;
+    border-top: darkgreen 5px solid;
+    border-bottom: yellow 5px dotted;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.07),
+                0 2px 4px rgba(0,0,0,0.07),
+                0 4px 8px rgba(0,0,0,0.07),
+                0 8px 16px rgba(0,0,0,0.07),
+                0 16px 32px rgba(0,0,0,0.07),
+                0 32px 64px rgba(0,0,0,0.07);
+}
+#mainWrapper{
+
+}
+#secondaryWrapper{
+    border-top: darkgreen 5px solid;
+    border-bottom: yellow 5px dotted;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.07),
+                0 2px 4px rgba(0,0,0,0.07),
+                0 4px 8px rgba(0,0,0,0.07),
+                0 8px 16px rgba(0,0,0,0.07),
+                0 16px 32px rgba(0,0,0,0.07),
+                0 32px 64px rgba(0,0,0,0.07);
+}
+#topContainer{
+    padding-left: 35%;
+
+
+
+}
+#toplist{
+    border: 0;
+
+}
+#addlinkitem{
+    padding-left: 22%;
+    font-style: italic;
+    border: 0px;
+    text-decoration: none;
+    background-color: lightgrey;
+}
+#addlink{
+    color: red;
+    font-style: italic;
+    text-decoration: none;
+}
+#addlink:hover{
+    color: green;
+    text-decoration: underline;
+}
+
+#listheading{
+    border: 0;
+    background: url("/static/images/woodbg.jpg");
+    background-repeat: repeat-x;
+}
+

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<link type="text/css" rel="stylesheet" href="{% static '/css/postautomobilestyles.css' %}">
+
+<h2 class="heading text-center">Our Admins will accept/decline your request</h2>
+
+
+
+<div class="container" id="maincontainer">
+    <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+
+        <div class="form-group mt-5">
+            <label class="text-primary">Automobile Name: </label>
+            <div>{{form.name}}</div>
+        </div>
+
+        <div class="form-group mt-5">
+            <label class="text-warning">Price: </label>
+            <div>{{form.price}}</div>
+        </div>
+        <div class="form-group mt-5">
+            <label class="text-danger">Image: </label>
+            <div>{{form.image}}</div>
+        </div>
+        <div class="form-group mt-5">
+            <label class="text-danger">Description: </label>
+            <div>{{form.description}}</div>
+        </div>
+        <div class="form-group mt-5">
+            <label class="text-danger">Status : </label>
+            <div>{{form.status}}</div>
+        </div>
+
+
+        <button type="submit" class="btn btn-success mt-4">Submit</button>
+        <button type="reset" class="btn btn-secondary mt-4">Reset</button>
+
+    </form>
+</div>
+
+{% endblock %}

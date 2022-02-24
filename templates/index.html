@@ -1,0 +1,533 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+<link type="text/css" rel="stylesheet" href="{% static '/css/indexStyles.css' %}">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+<style>
+    header {
+	background: url('http://www.autodatz.com/wp-content/uploads/2017/05/Old-Car-Wallpapers-Hd-36-with-Old-Car-Wallpapers-Hd.jpg');
+	text-align: center;
+	width: 100%;
+	height: auto;
+	background-size: cover;
+	background-attachment: fixed;
+	position: relative;
+	overflow: hidden;
+	border-radius: 0 0 85% 85% / 30%;
+}
+header .overlay{
+	width: 100%;
+	height: 100%;
+	padding: 50px;
+	color: #FFF;
+	text-shadow: 1px 1px 1px #333;
+  background-image: linear-gradient( 135deg, #9f05ff69 10%, #fd5e086b 100%);
+
+}
+
+h1 {
+	font-family: 'Dancing Script', cursive;
+	font-size: 80px;
+	margin-bottom: 30px;
+}
+
+
+
+
+</style>
+
+<!-- Navbar-->
+<nav class="navbar navbar-expand-lg bg-image navbar-dark py-3 fixed-top" style="
+    background-image: url('{% static '/images/navbar-background.png' %}');">
+
+    <div class="container">
+        <a href="/" class="navbar-brand"><img width="60" height="50" alt="" src="{% static '/images/main_logo.png' %}"></a>
+
+        <button
+                class="navbar-togler bg-black"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navmenu">
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item mx-5">
+                    <a href="#learn" class="nav-link text-warning"><i class="fas fa-graduation-cap fa-spin fa-1x"></i>Learning</a>
+                </li>
+
+                <li class="nav-item mx-5">
+                    <a href="remarks/" class="nav-link text-danger"><i class="fas fa-comment-dollar fa-spin fa-1x"></i>Feedbacks</a>
+                </li>
+
+                <li class="nav-item mx-5">
+                    <a href="aboutus/" class="nav-link text-info"><i class="fas fa-users fa-spin fa-1x"></i>About Us</a>
+                </li>
+
+                {% if user.is_authenticated %}
+                <li class="nav-item mx-1 text-light pt-2">
+
+                    <div class="dropdown" style="float:right;">
+                        <button class="btn text-success dropdown-toggle"><i class="far fa-user-crown"></i>
+                            Hey,{{user.first_name}}
+                        </button>
+                        <div class="dropdown-content btn-success">
+                            <a href="{% url 'users:editprofile' %}" class="nav-link text-warning"><i
+                                    class="fas fa-key fa-spin fa-1x"></i>Change Password</a>
+                            <a href="insiders/deleteaccount/" class="nav-link text-danger"><i
+                                    class="fas fa-user-slash fa-spin fa-1x"></i>Delete Account</a>
+                            <a href="insiders/logout/" class="nav-link text-info"><i
+                                    class="fas fa-sign-out-alt fa-spin fa-1x"></i>Log Out</a>
+                        </div>
+                    </div>
+
+                </li>
+
+                {% else %}
+                <li class="nav-item mx-1">
+                    <a href="insiders/" class="nav-link text-success"><i class="fas fa-user-secret"></i>Log In</a>
+                </li>
+                {% endif %}
+
+
+            </ul>
+
+
+        </div>
+    </div>
+</nav>
+
+
+<!-- Showcase-->
+<section class="bg-dark text-light p-5 text-center text-sm  mt-5">
+
+    <div class="container">
+
+        <div class="d-sm-flex">
+            <div class="pt-5 mt-5">
+                <h1>Where <span class="text-warning">
+                        Organics
+                    </span> meet <span class="text-danger">Innovation</span></h1>
+                <p class="lead my-4">
+                    Agro Nepal has been working to uplift the condition of Nepalese agriculture since 2021.
+                    This organisation solves problems of Nepalese agriculture by understanding farmers'
+                    problems and takes necessary steps to solve those problems.
+                </p>
+
+            </div>
+            <img class="img-fluid w-50 d-none d-sm-block" src="{% static '/images/img-1.svg' %}" alt="">
+        </div>
+    </div>
+
+</section>
+
+<!--Boxes-->
+<section class="p-5 bg-light bg-image">
+    <div class="container">
+        <div class="row">
+            <div class="col-md text-center mt-3" id="div2container1">
+                <div class="card bg-dark text-light">
+                    <div class="card-body text-center rounded-lg" id="cardHolder1">
+                        <div class="h1 mb-3">
+                            <i class="bi bi-bucket"></i>
+                        </div>
+                        <h3 class="card-title mb-3">
+                            Bucket List
+                        </h3>
+                        <p class="card-text">
+                            Explore our store and fill your bucket list with exclusive items for your agro farms. We
+                            assure the finest quality!
+                        </p>
+                        <a href="whishlists/" id="readmorebtn1" class="btn btn-secondary">Read More</a>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md text-center mt-3" id="div2container2">
+                <div class="card bg-secondary text-dark">
+                    <div class="card-body text-center rounded-lg" id="cardHolder2">
+                        <div class="h1 mb-3">
+                            <i class="bi bi-whatsapp"></i>
+                        </div>
+                        <h3 class="card-title mb-3">
+                            Hit Us Up
+                        </h3>
+                        <p class="card-text">
+                            Our team of experts would be more than happy to help you choose the best products for your
+                            farms. Just ask for help !
+                        </p>
+                        <a href="remarks/" id="readmorebtn2" class="btn btn-dark">Read More</a>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md text-center mt-3" id="div2container3">
+                <div class="card bg-dark text-light">
+                    <div class="card-body text-center" id="cardHolder3">
+                        <div class="h1 mb-3">
+                            <i class="bi bi-megaphone"></i>
+                        </div>
+                        <h3 class="card-title mb-3">
+                            Our Magazine
+                        </h3>
+                        <p class="card-text">
+                            Get to know about our ongoing offers. We are always with something new. Get updated about
+                            prices and read our weekly magazine!
+                        </p>
+                        <a href="/allsaleitems/" id="readmorebtn3" class="btn btn-secondary">Read More</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--Learn Section-->
+<section class="p-5 bg-secondary text-white">
+    <div class="row align-items-center justify-content-between text-center">
+        <div class="col-md">
+            <img src="{% static '/images/learn-agriculture.jpeg' %}" alt="" class="img-fluid width-100% rounded-circle"
+                 alt="">
+        </div>
+        <div class="col-md p-5 mt-4" style="border-left:darkblue solid;">
+            <h2><span class="text-primary">Redifining</span> <span class="text-warning">Nepalese</span> <span
+                    class="text-primary">Agriculture</span></h2>
+
+
+            <p class="lead text-center">Agro Nepal aims to and has been working on its misson
+                to redifine Nepalese agriculture. The one and only way
+                to maximize Nepalese agricultural products is to rapidly
+                modernize the tools and methods of farming practiced today.
+                Explore our modern tools and techniques, which can be fruitful
+                to you and the country as a whole in a long run.
+            </p>
+            <a href="/insiders/insiderregister/" class="btn btn-dark mt-5">
+                <i class="bi bi-people"> </i> Join Up
+            </a>
+
+        </div>
+    </div>
+</section>
+
+<!--Fourth Section-->
+<section id="learn" class="p-5 bg-dark text-light text-center">
+    <div class="row align-items-center justify-content-between">
+
+        <div class="col-md p-5 mt-4">
+            <h2 class="fw-bold">Learn about Agriculture</h2>
+
+
+            <p class="lead">Nepal has a huge potential to be the agricultural powerhouse of not only Asia, but the world
+                as a whole.
+                The alluvial soil in the southern lowlands and the fertile valleys in the hills can be the granary of
+                the world.
+                A single book cannot describe enough about the Nepalese agriculture and its future.
+                So, we have aimed to teach our followers about Nepalese agriculture in the best way that we can.
+            </p>
+            <a href="/learn/" class="btn btn-secondary mt-5">
+                <i class="bi bi-book"> </i> Read More
+            </a>
+
+        </div>
+        <div class="col-md">
+            <img src="{% static '/images/fourth-section.jpg' %}" alt="" class="img-fluid rounded-md" alt="">
+        </div>
+    </div>
+</section>
+<!--Question Accordion-->
+<section class="p-5 bg-success">
+    <div class="container">
+        <h2 class="text-center mb-3"><span class="text-danger">F</span>requently <span class="text-primary">A</span>sked
+            <span class="text-warning">Q</span>uestions</h2>
+        <div class="accordion accordion-flush mb-4">
+
+            <!--Question -1 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button
+                            class="accordion-button collapsed bg-secondary text-light"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#question-one">
+                        Is this a political organisation?
+                    </button>
+                </h2>
+                <div id="question-one" class="accordion-collapse collapse" data-bs-parent="#questions">
+                    <div class="accordion-body bg-warning">No we are not a political organisation</div>
+                </div>
+            </div>
+
+            <!--Question -2 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button
+                            class="accordion-button collapsed bg-info text-light"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#question-two">
+                        Does this organisation have a permit from Agriculture Ministry?
+                    </button>
+                </h2>
+                <div id="question-two" class="accordion-collapse collapse" data-bs-parent="#questions">
+                    <div class="accordion-body bg-danger">
+                        Yes, we have been given permisson by the Agriculture ministry to carry out reform works in
+                        Nepalese agriculture.
+                    </div>
+                </div>
+            </div>
+
+            <!--Question -3 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button
+                            class="accordion-button collapsed bg-primary text-light"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#question-three">
+                        Where are you located?
+                    </button>
+                </h2>
+                <div id="question-three" class="accordion-collapse collapse" data-bs-parent="#questions">
+                    <div class="accordion-body bg-secondary">Our headquarter is located in Dharan but we have contact
+                        offices setup at every district
+                        headquarters of the country. However, all the services provided from the headquarter may not be
+                        served by the district
+                        offices.
+                    </div>
+                </div>
+            </div>
+
+            <!--Question - 4-->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button
+                            class="accordion-button collapsed bg-warning text-light"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#question-four">
+                        Do you provide technical support?
+                    </button>
+                </h2>
+                <div id="question-four" class="accordion-collapse collapse" data-bs-parent="#questions">
+                    <div class="accordion-body bg-primary">
+                        Yes, we provide technical support to any of our needy followers. We install any tech bought
+                        from our stores free of charge into your farms. We provide free technical support for up to 1
+                        year of purchase on any of those techs.
+                    </div>
+                </div>
+            </div>
+
+            <!--Question - 5-->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button
+                            class="accordion-button collapsed bg-danger text-light"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#question-five">
+                        How many partners do you have?
+                    </button>
+                </h2>
+                <div id="question-five" class="accordion-collapse collapse" data-bs-parent="#questions">
+                    <div class="accordion-body bg-info">
+                        At present moment, Agro Nepal has been working solely. However, we can expect local governments
+                        and
+                        some volunteering organisations working in remote parts of the country to work hand in hand with
+                        us.
+                        We aim to work independently as far as practicable.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--Don't miss section-->
+<section class="p-5 bg-secondary bg-image" style="
+    background-image: url('../images/farms.jpg'); background-attachment: fixed;">
+    <div class="container text-light">
+        <header>
+            <div class="overlay">
+                <h1>DONT MISS THESE</h1>
+                <h3>Our Unique Features</h3>
+
+                <br>
+                <div class="row g-4 justify-content-between">
+
+
+                    <div class="col-md-6 col-lg-3 py-5 mt-5">
+                        <div class="card bg-dark text-light" id="holder1">
+                            <div class="card-body text-center">
+                                <img
+                                        src="{% static '/images/market-ideas.jpg' %}"
+                                        class="img-fluid rounded-circle mb-3"
+                                        alt="">
+                                <h3 class="card-title mb-3">Market Ideas</h3>
+                                <p class="card-text p-2">Get a brief insight about the present market condition and the
+                                    prices of various agricultural produce. Get updated about the market status too!
+                                </p>
+                                <a href="/allsaleitems/">
+                                    <button id="dontmissbtn1" class="bg-danger rounded-circle text-light p-3"> Check
+                                        Items
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3 py-3">
+                        <div class="card bg-dark text-light" id="holder2">
+                            <div class="card-body text-center">
+                                <img
+                                        src="{% static '/images/buy-sell.jpg' %}"
+                                        class="img-fluid rounded-circle mb-3"
+                                        alt="">
+                                <h3 class="card-title mb-3">Buy/Sell Products</h3>
+                                <p class="card-text p-2"> Sell your produce or buy someone's produce at the best price
+                                    through
+                                    us. We provide the best quality with guarantee.
+                                </p>
+                                <a href="products/">
+                                    <button id="dontmissbtn2" class="bg-primary rounded-circle text-light p-3">Check It
+                                        Out
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3 py-3">
+                        <div class="card bg-dark text-light" id="holder3">
+                            <div class="card-body text-center">
+                                <img
+                                        src="{% static '/images/automobiles.JPG' %}"
+                                        class="img-fluid rounded-circle mb-3"
+                                        alt="">
+                                <h3 class="card-title mb-3">Get Automobiles</h3>
+                                <p class="card-text p-2">
+                                    Hire available automobiles or tools at the best rate so that you can overcome your
+                                    one
+                                    time need.
+                                </p>
+                                <a href="automobiles/">
+                                    <button id="dontmissbtn3" class="bg-warning rounded-circle text-light p-3">Gear It
+                                        Up
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3 py-5 mt-5">
+                        <div class="card bg-dark text-light" id="holder4">
+                            <div class="card-body text-center">
+                                <img
+                                        src="{% static '/images/farmers.jpg' %}"
+                                        class="img-fluid rounded-circle mb-3"
+                                        alt="">
+                                <h3 class="card-title mb-3">Join/Hire Farmers</h3>
+                                <p class="card-text p-2">
+                                    Hire a handful of farmers to work for you or work in a needy farmer's farm to help
+                                    each
+                                    other out and
+                                    earn a few bucks! Why not? Isn't it? Huh!?
+                                </p>
+                                <a href="workers/">
+                                    <button class="bg-success rounded-circle text-light p-3" id="dontmissbtn4">Partner
+                                        Up
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </header>
+
+    </div>
+</section>
+
+<!--Contact and map-->
+<section class="p-5 bg-image" style="background-image: url(../images/wall.jpg);">
+    <div class="container ">
+        <div class="row g-4 ">
+            <div class="col-md">
+                <h2 class="text-center mt-5 pt-5 text-success">
+                    Contact Info
+                </h2>
+                <ul class="list-group list-group-flush lead mt-3 pt-3">
+                    <li class="list-group-item rounded rounded-lg mt-2">
+                        <span class="fw-bold">Main Location:</span> Dharan Clock Tower
+                    </li>
+
+                    <li class="list-group-item rounded rounded-lg mt-2">
+                        <span class="fw-bold">Our Email:</span> agronepal@gmail.com
+                    </li>
+
+                    <li class="list-group-item rounded rounded-lg mt-2">
+                        <span class="fw-bold">Phone Number:</span> 9876543210
+                    </li>
+
+                    <li class="list-group-item rounded rounded-lg mt-2">
+                        <span class="fw-bold">Board Name:</span> Agro Nepal Office
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md">
+                <div class="mapouter">
+                    <div class="gmap_canvas">
+                        <iframe width="600"
+                                height="500"
+                                id="gmap_canvas"
+                                src="https://maps.google.com/maps?q=dharan%20clock%20tower&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                                frameborder="0"
+                                scrolling="no"
+                                marginheight="0"
+                                marginwidth="0"></iframe>
+                        <a href="https://putlocker-is.org"></a><br>
+                        <style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}</style>
+                        <a href="https://www.embedgooglemap.net"></a>
+                        <style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}
+
+
+
+                        </style>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+
+
+{% endblock %}

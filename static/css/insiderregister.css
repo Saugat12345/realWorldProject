@@ -1,0 +1,10 @@
+#mainContainer{
+    padding: 1% 0% 5% 33%;
+
+}
+.body{
+    background: url("/static/images/aesthetic.jpg") fixed;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-size: 100% 100%;
+}

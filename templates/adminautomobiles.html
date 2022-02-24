@@ -1,0 +1,48 @@
+{% extends 'adminbase.html' %}
+
+{% load static %}
+
+{% block content %}
+<link type="text/css" rel="stylesheet" href="{% static '/css/adminautomobiles.css' %}">
+<h2 class="text-center mt-5 pt-5">These are our Automobiles!
+    <form action="{% url 'addautomobile' %}" method="post" class="d-inline">
+        {% csrf_token %}
+        <input type="submit" class="btn btn-success" value="Add">
+    </form>
+</h2>
+
+<div class="container" id="mainContainer">
+
+
+    {% for automobile in automobiles %}
+
+    <div class="card-deck mt-3">
+
+        <div class="card">
+            <img class="card-img-top" src="/{{automobile.image}}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title text-center text-primary">Assigned ID : {{automobile.id}}</h5>
+                <h5 class="card-title text-center text-warning">{{automobile.name}}</h5>
+                <p class="card-text text-center text-danger">{{automobile.description}}</p>
+                <p class="card-text text-center"><small class="text-muted">{{automobile.status}}</small></p>
+                <p class="card-text text-center text-secondary">${{automobile.price}}</p>
+            </div>
+            <div class="container text-center">
+                <form action="{% url 'updateautomobile' automobile.id %}" method="post" class="d-inline text-center">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-warning" value="Update">
+                </form>
+                <form action="{% url 'deleteautomobile' automobile.id %}" method="post" class="d-inline text-center">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-danger" value="Delete">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+
+</div>
+
+
+{% endblock %}

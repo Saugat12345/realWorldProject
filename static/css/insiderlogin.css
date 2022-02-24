@@ -1,0 +1,13 @@
+.body{
+    background: url("/static/images/loginbg.jpg") fixed;
+    color: white;
+}
+
+#registerlink:hover {
+    color: orange;
+}
+#registerlink{
+    text-decoration: none;
+    color: red;
+    margin: 10 0 10 0;
+}

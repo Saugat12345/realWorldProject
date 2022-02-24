@@ -1,0 +1,16 @@
+#mainContainer{
+    display: inline;
+}
+.showupdivs{
+    display: none;
+}
+a:focus,a:hover,a{
+    outline:none;
+    text-decoration: none;
+}
+
+
+
+
+
+

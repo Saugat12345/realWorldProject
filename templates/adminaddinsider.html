@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+
+
+
+<link type="text/css" rel="stylesheet" href="{% static '/css/insiderregister.css' %}">
+
+<h1 class="text-center text-warning">Add <span class="text-danger"> Insider</span></h1>
+<div class="container" id="mainContainer">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="form-group mt-5">
+            <label class="text-light">First Name : </label><br>
+            <input type="text" name="first_name" placeholder="First Name">
+
+        </div>
+
+        <div class="form-group mt-5">
+            <label class="text-light">Last Name : </label><br>
+            <input type="text" name="last_name" placeholder="Last Name">
+
+        </div>
+
+        <div class="form-group mt-5">
+            <label class="text-light">Your Username : </label><br>
+            <input type="text" name="username">
+            <small id="usernameHelp" class="form-text text-light"><i>Make sure that you remember this username!</i></small>
+        </div>
+
+        <div class="form-group mt-5">
+            <label class="text-light">Email : </label><br>
+            <input type="text" name="email" placeholder="Your Email">
+        </div>
+
+
+
+
+        <div class="form-group mt-5">
+            <label class="text-light">Password : </label><br>
+            <input type="password" name="password">
+            <small id="passwordHelp" class="form-text text-light"><i>Never share your password!</i></small>
+        </div>
+
+        <button type="submit" class="btn btn-success mt-4">Submit</button>
+        <button type="reset" class="btn btn-secondary mt-4">Reset</button>
+
+    </form>
+    <div class="container">
+        {% for message in messages %}
+        <h3>{{message}}</h3>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}

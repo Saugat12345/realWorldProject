@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<link type="text/css" rel="stylesheet" href="{% static '/css/wishliststyles.css' %}">
+
+<h2 class="text-center">Here's Your Wishlist</h2>
+<div class="container" id="mainContainer">
+    <table class="table table-sm table-hover table-success" id="table">
+        <tr class="table-row table-primary">
+            <th class="table-heading text-center">Customer ID</th>
+            <th class="table-heading text-center">Your Name</th>
+            <th class="table-heading text-center">Wish Name</th>
+            <th class="table-heading text-center">Price ($)</th>
+            <th class="table-heading text-center">Wish Date</th>
+            <th class="table-heading text-center">Actions</th>
+        </tr>
+
+        {% for wish in wishlists %}
+        <tr class="table-row">
+            <td class="table-data text-center">{{wish.customer_id}}</td>
+            <td class="table-data text-center">{{wish.customer_name}}</td>
+            <td class="table-data text-center">{{wish.wish_name}}</td>
+            <td class="table-data text-center">{{wish.price}}</td>
+            <td class="table-data text-center">{{wish.date}}</td>
+
+
+
+            <td class="table-data text-center">
+                {% if status == 'available' %}
+
+                <form action="{% url 'finalize' product_id %}" class="d-inline">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-primary" value="Order">
+                </form>
+
+
+                <form method="POST" action="{% url 'delete' wish.id %}" class="d-inline">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-danger" value="Delete">
+                </form>
+
+
+                {% else %}
+
+
+                <form method="POST" action="{% url 'delete' wish.id %}" class="d-inline">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-danger" value="Delete">
+                </form>
+
+
+                {% endif %}
+            </td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+</div>
+
+{% endblock %}

@@ -1,0 +1,74 @@
+
+#table{
+    margin-right: 10%;
+    border-collapse: collapse;
+    border: 5px solid black;
+}
+.table-heading{
+    background-color: blue;
+    color: red;
+    padding: 10px;
+}
+.table-data{
+    background-color: darkgrey;
+
+}
+a:link {
+  text-decoration: none;
+}
+#joinworker{
+    display: inline-block;
+    justify-content: right;
+}
+#availableWorkers{
+    display: inline-block;
+    justify-content: center;
+    text-align: center;
+
+    margin: auto;
+    width: 100%;
+    padding: 10px;
+}
+
+#topContainer{
+    background: url("/static/images/sackbg.jpg") 100% fixed;
+
+}
+#toplist{
+    border: 0;
+    background-color: lightgrey;
+}
+#addlinkitem{
+    padding-left: 22%;
+    font-style: italic;
+    border: 0px;
+    text-decoration: none;
+    background-color: lightgrey;
+}
+#addlink{
+    color: red;
+    font-style: italic;
+    text-decoration: none;
+}
+#addlink:hover{
+    color: green;
+    text-decoration: underline;
+}
+
+#listheading{
+    border: 0;
+    background-color: lightgrey;
+}
+.body{
+    background: url("/static/images/sackbg.jpg") 50% 0;
+}
+#topContainer{
+    padding-left: 35%;
+    background-color: lightgrey;
+}
+
+
+
+
+
+

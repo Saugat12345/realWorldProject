@@ -1,0 +1,59 @@
+{% extends 'adminbase.html' %}
+{% load static %}
+
+{% block content %}
+<link type="text/css" rel="stylesheet" href="{% static '/css/adminworkers.css' %}">
+
+
+<div class="container mt-5 pt-5" id="mainContainer">
+    <h2 class="text-center mt-5 pt-5">
+        These are our workers
+        <form action="{% url 'addworker' %}" method="post" class="d-inline">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-success" value="Add">
+        </form>
+
+    </h2>
+    <table class="table table-sm table-hover table-success mt-5" id="table">
+
+        <tr class="table-row table-primary">
+            <th class="table-heading">ID</th>
+            <th class="table-heading">Name</th>
+            <th class="table-heading">Email</th>
+            <th class="table-heading">Rate ($)</th>
+            <th class="table-heading">Status</th>
+            <th class="table-heading">Actions</th>
+
+        </tr>
+        {% for worker in workers %}
+        <tr class="table-row {% cycle 'table-warning' 'table-danger' %}">
+            <td class="table-data">{{worker.id}}</td>
+            <td class="table-data">{{worker.name}}</td>
+            <td class="table-data">{{worker.email}}</td>
+            <td class="table-data">{{worker.rate}}</td>
+
+            {% if worker.status == 'available' %}
+            <td class="table-data text-success">{{worker.status}}</td>
+
+            {% else %}
+            <td class="table-data text-danger">{{worker.status}}</td>
+            {% endif %}
+            <td class="table-data">
+                <form action="{% url 'updateworker' worker.id %}" method="post" class="d-inline">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-warning" value="Update">
+                </form>
+                <form action="{% url 'deleteworker' worker.id %}" method="post" class="d-inline">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-danger" value="Delete">
+                </form>
+            </td>
+        </tr>
+
+
+        {% endfor %}
+    </table>
+</div>
+
+
+{% endblock %}

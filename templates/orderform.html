@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<link type="text/css" rel="stylesheet" href="{% static '/css/orderStyles.css' %}">
+
+
+<section class="order-form my-4 mx-4">
+    <div class="container pt-4">
+        <form enctype="multipart/form-data" method="post" class="justify-content-center">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="display-4 py-2 text-truncate">Finalize Order</h1>
+                    <hr class="mt-1">
+                </div>
+                <div class="col-12">
+
+                    <div class="row mx-4">
+                        <div class="col-12 mb-2">
+                            <label class="order-form-label">Customer Name : {{customer_name}}</label>
+                        </div>
+
+                    </div>
+
+                    <div class="row mt-3 mx-4">
+                        <div class="col-12">
+                            <label class="order-form-label">Order Type : Product</label>
+                        </div>
+                        <div class="col-12">
+                            <label class="order-form-label">Product Name : {{product_name}}</label>
+                        </div>
+
+                    </div>
+
+
+                    <div class="row mt-3 mx-4">
+                        <div class="col-12">
+                            <label class="order-form-label">Date : {{today}}</label><br>
+                            <label class="order-form-label">Price ($) : {{price}}</label>
+
+                        </div>
+
+                    </div>
+
+                    <div class="row mt-3 mx-4">
+                        <div class="col-12">
+                            <label class="order-form-label">Quantity</label>
+                        </div>
+                        <div class="col-12">
+                            <input class="order-form-input" id="quantity" name="quantity" type="number" value="1">
+                        </div>
+                    </div>
+                    <div class="row mt-3 mx-4">
+                        <div class="col-12">
+                            <label class="order-form-label">Remarks: </label>
+                        </div>
+                        <div class="col-12">
+                            <textarea name="remarks" class="order-form-input" placeholder=""></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3 mx-4">
+                        <div class="col-12">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input"
+                                       name="validation"
+                                       id="validation" value="1">
+                                <label for="validation" class="form-check-label">I Agree To Agro Nepal's <a
+                                        href="/tradeagreement/" class="text-danger">Trade Policy</a></label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row mt-3">
+                        <div class="col-12">
+
+                            <input type="submit" id="submitbtn" class="btn btn-warning">
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+
+<script>{{price}}</script>
+
+<script type="text/javascript">
+
+
+    const checkbox = document.getElementById('validation');
+    const btn = document.getElementById('submitbtn');
+
+    const quantity = document.querySelector('#quantity');
+    var productPrice = document.getElementById("price").value;
+
+
+    btn.onclick = function total(e){
+        e.preventDefault();
+        if (checkbox.value === ''){
+            innerDiv.innerHTML = "<h2> Please Check this Checkbox </h2>";
+            setTimeout(() => hiddenDiv.remove(), 7000);
+        }
+        else{
+            var total = (quantity.value) * (productPrice);
+
+
+            innerDiv.innerText = `Thank You. Your Total is ` + total;
+            setTimeout(() => innerDiv.remove(), 7000);
+        }
+    }
+
+
+</script>
+
+
+{% endblock %}
