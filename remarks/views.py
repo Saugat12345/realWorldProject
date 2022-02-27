@@ -22,9 +22,9 @@ def remarkpage_view(request):
         remark.message = message
         remark.remarks = remarks
 
-        if form.is_valid():
-            remark.save()
-            return redirect('#/')
+        # if form.is_valid():
+        remark.save()
+        return redirect('#/')
 
 
     else:
